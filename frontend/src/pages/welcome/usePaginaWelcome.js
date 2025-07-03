@@ -2,16 +2,27 @@
 import { useState } from 'react';
 
 //External Components
+import { useNavigate } from 'react-router-dom';
 import { useFormik } from 'formik';
 import * as Yup from 'yup';
 
+//INTERNAL SERVICES
+import { requestData } from '../../services/apiService';
+
+//REDUX
+import { useDispatch } from 'react-redux';
+import { asignarUsuario } from '../../stores/usuarioSlice';
+
 export const usePaginaWelcome = () => {
+  const navigate = useNavigate();
+  const dispatch = useDispatch();
+
   const [loadingLogin, setLoadingLogin] = useState(false);
 
   const formik = useFormik({
     initialValues: {
-      numInterno: '',
-      email: '',
+      numInterno: '254152',
+      email: 'yeimer@mail.com',
     },
     validationSchema: Yup.object({
       numInterno: Yup.number()
@@ -20,16 +31,20 @@ export const usePaginaWelcome = () => {
       email: Yup.string().email('Correo inválido').required('Este campo es obligatorio'),
     }),
     onSubmit: (values) => {
-      console.log('Login con:', values);
-      handleSubmit();
+      handleSubmit(values);
     },
   });
 
-  const handleSubmit = () => {
+  const handleSubmit = async (values) => {
     setLoadingLogin(true);
-    setTimeout(() => {
-      setLoadingLogin(false);
-    }, 1500);
+    const response = await requestData('post', '/login', values);
+
+    if (response.ok) {
+      dispatch(asignarUsuario(response.datos));
+      navigate('/Producto');
+    }
+
+    setLoadingLogin(false);
   };
 
   const stateUpdaters = {};
