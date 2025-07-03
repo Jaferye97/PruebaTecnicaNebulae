@@ -6,6 +6,6 @@ const app = express();
 app.use(cors());
 app.use(express.json());
 
-app.use('/api/productos', productoRoutes);
+app.use('/api/producto', productoRoutes);
 
 module.exports = app;

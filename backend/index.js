@@ -1,12 +1,8 @@
-const express = require('express');
-const app = express();
+require('dotenv').config();
+const app = require('./src/app');
 
-const PORT = 3001;
-
-app.get('/', (req, res) => {
-  res.send('¡Hola Mundo desde Node.js!');
-});
+const PORT = process.env.PORT || 3001;
 
 app.listen(PORT, () => {
-  console.log(`Servidor escuchando en http://localhost:${PORT}`);
+  console.log(`Servidor corriendo en http://localhost:${PORT}`);
 });
