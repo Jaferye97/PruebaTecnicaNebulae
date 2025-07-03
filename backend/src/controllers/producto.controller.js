@@ -19,3 +19,18 @@ exports.obtenerTodosPaginacion = async (req, res) => {
     });
   }
 };
+
+exports.crear = async (req, res) => {
+  const response = await service.crear(req.body);
+  res.json(response);
+};
+
+exports.editar = async (req, res) => {
+  const response = await service.editar(req.params.id, req.body);
+  res.json(response);
+};
+
+exports.cambiarEstado = async (req, res) => {
+  const response = await service.cambiarEstado(req.params.id);
+  res.json(response);
+};

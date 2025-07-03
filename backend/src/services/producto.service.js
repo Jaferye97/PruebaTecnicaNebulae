@@ -27,3 +27,24 @@ exports.obtenerTodosPaginacion = async (nombre, categoria, pagina, cantidadRegis
     totalPaginas: Math.ceil(total / cantidadRegistros),
   };
 };
+
+exports.crear = (data) => model.crear(data);
+
+exports.editar = (id, data) => model.editar(id, data);
+
+exports.cambiarEstado = async (id) => {
+  const producto = await model.obtenerProductoPorId(id);
+
+  if (!producto) {
+    return { ok: false, message: 'Producto no encontrado' };
+  }
+
+  const nuevoEstado = !producto.activo;
+
+  await this.editar(id, { activo: nuevoEstado });
+
+  return {
+    ok: true,
+    message: `Estado actualizado a ${nuevoEstado}`,
+  };
+};
