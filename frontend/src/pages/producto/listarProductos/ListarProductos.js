@@ -37,6 +37,7 @@ export default function ListarProducto() {
     handleProximaPagina,
     handleUltimaPagina,
     handleSelectCantidadRegistro,
+    handleCambiarEstadoProducto,
   } = stateUpdaters;
   const { formikBusqueda, loadingTable, productos, inputsTable, cantidadRegistro } = state;
   const { pagina, totalPaginas, esUltimaPagina, esPrimeraPagina, totalRegistros } = inputsTable;
@@ -159,7 +160,7 @@ export default function ListarProducto() {
                         variant="contained"
                         color="primary"
                         size="small"
-                        onClick={() => navigate(`/Producto/${prod.id}`)}
+                        onClick={() => navigate(`/Producto/${prod._id}`)}
                       >
                         Editar
                       </Button>
@@ -167,7 +168,7 @@ export default function ListarProducto() {
                         variant="outlined"
                         color={prod.activo ? 'error' : 'success'}
                         size="small"
-                        //   onClick={() => handleToggleEstado(prod._id)}
+                        onClick={() => handleCambiarEstadoProducto(prod._id)}
                       >
                         {prod.activo ? 'Desactivar' : 'Activar'}
                       </Button>

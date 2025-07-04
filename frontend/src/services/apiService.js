@@ -28,7 +28,6 @@ export const requestData = async (method, url, data = null) => {
         showConfirmButton: false,
         timer: 1500,
       });
-      throw new Error(json.message || DEFAULT_ERROR_MESSAGE);
     }
 
     return json;

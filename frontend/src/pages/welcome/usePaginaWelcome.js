@@ -1,4 +1,4 @@
-// React Components
+//React Components
 import { useState } from 'react';
 
 //External Components
@@ -6,7 +6,7 @@ import { useNavigate } from 'react-router-dom';
 import { useFormik } from 'formik';
 import * as Yup from 'yup';
 
-//INTERNAL SERVICES
+//Internal Services
 import { requestData } from '../../services/apiService';
 
 //REDUX
@@ -37,7 +37,7 @@ export const usePaginaWelcome = () => {
 
   const handleSubmit = async (values) => {
     setLoadingLogin(true);
-    const response = await requestData('post', '/login', values);
+    const response = await requestData('POST', '/login', values);
 
     if (response.ok) {
       dispatch(asignarUsuario(response.datos));
