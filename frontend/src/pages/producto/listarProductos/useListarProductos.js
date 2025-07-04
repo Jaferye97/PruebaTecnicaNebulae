@@ -6,7 +6,7 @@ import { useFormik } from 'formik';
 import * as Yup from 'yup';
 import Swal from 'sweetalert2';
 
-//INTERNAL SERVICES
+//Internal Services
 import { requestData } from '../../../services/apiService';
 
 export const useListarProductos = () => {

@@ -1,4 +1,4 @@
-// React Components
+//React Components
 import { useState } from 'react';
 
 //External Components
@@ -6,7 +6,7 @@ import { useNavigate } from 'react-router-dom';
 import { useFormik } from 'formik';
 import * as Yup from 'yup';
 
-//INTERNAL SERVICES
+//Internal Services
 import { requestData } from '../../services/apiService';
 
 //REDUX
