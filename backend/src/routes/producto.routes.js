@@ -7,5 +7,6 @@ router.get('/obtenerTodosPaginacion', asyncWrapper(controller.obtenerTodosPagina
 router.post('/', asyncWrapper(controller.crear));
 router.put('/:id', asyncWrapper(controller.editar));
 router.patch('/:id/CambiarEstado', asyncWrapper(controller.cambiarEstado));
+router.get('/:id', asyncWrapper(controller.obtenerProductoPorId));
 
 module.exports = router;
