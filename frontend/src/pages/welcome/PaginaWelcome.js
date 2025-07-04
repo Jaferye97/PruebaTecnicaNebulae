@@ -1,8 +1,8 @@
 //Internal Hook
-import LoadingSpinner from '../../components/spinners/LoadingSpinner';
+import { usePaginaWelcome } from './usePaginaWelcome';
 
 //Internal Components
-import { usePaginaWelcome } from './usePaginaWelcome';
+import LoadingSpinner from '../../components/spinners/LoadingSpinner';
 
 const PaginaWelcome = () => {
   const { state } = usePaginaWelcome();

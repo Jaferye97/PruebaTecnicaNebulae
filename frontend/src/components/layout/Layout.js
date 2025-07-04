@@ -3,12 +3,16 @@ import { Outlet } from 'react-router-dom';
 
 //Internal Components
 import SideBar from './components/MenuSidebar';
+import Navbar from './components/NavBar';
 
 const Layout = () => {
   return (
-    <SideBar>
-      <Outlet />
-    </SideBar>
+    <>
+      <Navbar />
+      <SideBar>
+        <Outlet />
+      </SideBar>
+    </>
   );
 };
 
