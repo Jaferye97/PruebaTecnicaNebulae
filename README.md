@@ -7,7 +7,7 @@ Este proyecto está dividido en dos partes:
 
 ## 🔧 Requisitos previos
 
-- Node.js (v16+ recomendado)
+- Node.js (v18+ recomendado)
 - MongoDB (local o Docker)
 - Docker y Docker Compose (opcional para despliegue)
 - Git
@@ -31,7 +31,7 @@ Crea un archivo `.env` dentro del directorio `backend` con el siguiente contenid
 ```env
 PORT=3001
 MONGO_URI=mongodb://localhost:27017/PruebaTecnicaNebulae
-MONGO_DB=admin
+MONGO_DB=PruebaTecnicaNebulae
 ```
 ---
 
