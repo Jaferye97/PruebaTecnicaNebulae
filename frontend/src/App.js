@@ -4,6 +4,9 @@ import { BrowserRouter, Route, Routes } from 'react-router-dom';
 //Internal Components
 import Layout from './components/layout/Layout';
 
+//Guards
+import UsuarioGuard from './guards/UsuarioGuard';
+
 //Pages
 import Welcome from './pages/welcome/PaginaWelcome';
 import PaginaNoEncontrada from './pages/errors/PaginaNoEncontrada';
@@ -19,23 +22,25 @@ function App() {
           path="/"
           element={<Welcome />}
         />
-        <Route element={<Layout />}>
-          <Route
-            path="/Producto"
-            element={<ListarProducto />}
-          />
-          <Route
-            path="/Producto/Crear"
-            element={<CrearProducto />}
-          />
-          <Route
-            path="/Producto/:id"
-            element={<EditarProducto />}
-          />
-          <Route
-            path="*"
-            element={<PaginaNoEncontrada />}
-          />
+        <Route element={<UsuarioGuard />}>
+          <Route element={<Layout />}>
+            <Route
+              path="/Producto"
+              element={<ListarProducto />}
+            />
+            <Route
+              path="/Producto/Crear"
+              element={<CrearProducto />}
+            />
+            <Route
+              path="/Producto/:id"
+              element={<EditarProducto />}
+            />
+            <Route
+              path="*"
+              element={<PaginaNoEncontrada />}
+            />
+          </Route>
         </Route>
       </Routes>
     </BrowserRouter>
