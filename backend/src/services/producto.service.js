@@ -28,9 +28,23 @@ exports.obtenerTodosPaginacion = async (nombre, categoria, pagina, cantidadRegis
   };
 };
 
-exports.crear = (data) => model.crear(data);
+exports.crear = async (data) => {
+  const nuevoProducto = await model.crear(data);
 
-exports.editar = (id, data) => model.editar(id, data);
+  return {
+    ok: true,
+    datos: nuevoProducto,
+  };
+};
+
+exports.editar = async (id, data) => {
+  const producto = await model.editar(id, data);
+
+  return {
+    ok: true,
+    datos: producto,
+  };
+};
 
 exports.cambiarEstado = async (id) => {
   const producto = await model.obtenerProductoPorId(id);
