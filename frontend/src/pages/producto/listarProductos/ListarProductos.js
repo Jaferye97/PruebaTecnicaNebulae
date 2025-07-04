@@ -160,7 +160,7 @@ export default function ListarProducto() {
                         variant="contained"
                         color="primary"
                         size="small"
-                        onClick={() => navigate(`/Producto/${prod.id}`)}
+                        onClick={() => navigate(`/Producto/${prod._id}`)}
                       >
                         Editar
                       </Button>
