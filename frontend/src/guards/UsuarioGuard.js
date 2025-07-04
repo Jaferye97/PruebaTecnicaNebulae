@@ -1,12 +1,14 @@
-import { Navigate } from 'react-router-dom';
+//External Components
+import { Navigate, Outlet } from 'react-router-dom';
 
+//Redux
 import { useSelector } from 'react-redux';
 
-const UsuarioGuard = ({ children }) => {
+const UsuarioGuard = () => {
   const autenticado = useSelector((state) => state?.usuarioLogin?.autenticado);
 
   return autenticado ? (
-    children
+    <Outlet />
   ) : (
     <Navigate
       replace
