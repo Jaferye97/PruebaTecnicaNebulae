@@ -22,6 +22,7 @@ function App() {
           path="/"
           element={<Welcome />}
         />
+
         <Route element={<UsuarioGuard />}>
           <Route element={<Layout />}>
             <Route
@@ -36,12 +37,17 @@ function App() {
               path="/Producto/:id"
               element={<EditarProducto />}
             />
-            <Route
-              path="*"
-              element={<PaginaNoEncontrada />}
-            />
           </Route>
+          <Route
+            path="*"
+            element={<PaginaNoEncontrada />}
+          />
         </Route>
+
+        <Route
+          path="*"
+          element={<Welcome />}
+        />
       </Routes>
     </BrowserRouter>
   );
