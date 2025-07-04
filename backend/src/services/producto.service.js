@@ -62,3 +62,16 @@ exports.cambiarEstado = async (id) => {
     message: `Estado actualizado a ${nuevoEstado}`,
   };
 };
+
+exports.obtenerProductoPorId = async (id) => {
+  const producto = await model.obtenerProductoPorId(id);
+
+  if (!producto) {
+    return { ok: false, message: 'Producto no encontrado' };
+  }
+
+  return {
+    ok: true,
+    datos: producto,
+  };
+};
