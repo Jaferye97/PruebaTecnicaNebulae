@@ -36,3 +36,8 @@ exports.cambiarEstado = async (req, res) => {
   const response = await service.cambiarEstado(req.params.id);
   res.json(response);
 };
+
+exports.obtenerProductoPorId = async (req, res) => {
+  const response = await service.obtenerProductoPorId(req.params.id);
+  res.json(response);
+};
