@@ -4,6 +4,7 @@ import { useCallback, useEffect, useState } from 'react';
 //External Components
 import { useFormik } from 'formik';
 import * as Yup from 'yup';
+import Swal from 'sweetalert2';
 
 //INTERNAL SERVICES
 import { requestData } from '../../../services/apiService';
@@ -66,12 +67,9 @@ export const useListarProductos = () => {
     setLoadingTable(true);
     const url = `/producto/obtenerTodosPaginacion?nombre=${_pFiltroNombre}&categoria=${_pfiltroCategoria}&pagina=${filter.pagina}&cantidadRegistros=${filter.cantidadRegistro}`;
 
-    const response = await requestData('get', url);
+    const response = await requestData('GET', url);
     if (response.ok) {
       setProductos(response.datos);
-
-      console.log(response.datos.length);
-      console.log(response);
 
       if (response.datos.length === 0) {
         setInputsTable({
@@ -118,12 +116,29 @@ export const useListarProductos = () => {
     setInputsBusqueda((old) => ({ ...old, cantidadRegistro: cantidad }));
   };
 
+  const handleCambiarEstadoProducto = async (id) => {
+    const response = await requestData('PATCH', `/producto/${id}/cambiarEstado`);
+
+    if (response.ok) {
+      Swal.fire({
+        icon: 'success',
+        title: 'Estado actualizado correctamente.',
+        position: 'center',
+        showConfirmButton: false,
+        timer: 1500,
+      });
+    }
+
+    getData(inputsBusqueda);
+  };
+
   const stateUpdaters = {
     handleAtrasPagina,
     handlePrimeraPagina,
     handleProximaPagina,
     handleUltimaPagina,
     handleSelectCantidadRegistro,
+    handleCambiarEstadoProducto,
   };
 
   const state = {

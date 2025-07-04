@@ -37,7 +37,7 @@ export const usePaginaWelcome = () => {
 
   const handleSubmit = async (values) => {
     setLoadingLogin(true);
-    const response = await requestData('post', '/login', values);
+    const response = await requestData('POST', '/login', values);
 
     if (response.ok) {
       dispatch(asignarUsuario(response.datos));
