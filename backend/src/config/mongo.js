@@ -10,7 +10,7 @@ const connectDB = async () => {
     await client.connect();
     console.log('Conectado a MongoDB');
   }
-  return client.db('admin');
+  return client.db(db);
 };
 
 module.exports = { getDB: connectDB };

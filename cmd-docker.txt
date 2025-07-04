@@ -1,0 +1,26 @@
+ejecutar docker-compose
+->docker compose up --build
+
+Ver contenedores ejecutando
+->docker ps
+
+Inspeccionar Logs en tiempo real
+->docker logs -f backend 
+
+
+Toda la informacion de Docker
+->docker info
+
+Version de wsl instalado
+->wsl -l -v
+
+Insert datos en el mongoDb Docker
+->docker cp init.js mongodb:/init.js
+->docker exec -it mongodb bash  
+->mongosh < /init.js
+
+Visual datos
+->docker exec -it mongodb mongosh
+->use PruebaTecnicaNebulae
+->show collections
+->db.usuario.find().pretty()
